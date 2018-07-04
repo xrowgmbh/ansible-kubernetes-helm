@@ -14,7 +14,6 @@
       get_url:
         url: '{{kubernetes_helm_url}}'
         dest: /tmp/{{kubernetes_helm_tgz}}
-        checksum: '{{kubernetes_helm_checksum}}'
         mode: 0644
 
     - name: make install dir
@@ -49,6 +48,7 @@
   file:
     src: '{{kubernetes_helm_install_dir}}/{{kubernetes_helm_platform}}/{{item}}'
     dest: '{{kubernetes_helm_bin_dir}}/{{item}}'
+    force: yes
     state: link
 
 
